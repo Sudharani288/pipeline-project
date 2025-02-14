@@ -1,0 +1,32 @@
+pipeline {
+    agent { label 'mvn-build-agent' }
+
+    stages {
+        stage('Clean up') {
+            steps {
+                cleanWs()
+            }
+        }
+
+        stage('clone') {
+            steps {
+                sh 'git clone https://github.com/Sudharani288/java-war-repo.git'
+            }
+        }    
+
+        stage('Build') {
+            steps {
+                dir ('java-war-repo'){
+                    sh 'mvn clean install -DskipTests'
+                }
+            }
+        }  
+      stage('Test') {
+            steps {
+                dir ('java-war-repo'){
+                    sh 'mvn test'
+                }
+            }
+      }
+    }
+}
