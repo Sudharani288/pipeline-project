@@ -13,6 +13,8 @@ pipeline {
                         sh 'git clone https://github.com/Sudharani288/java-war-repo.git'
                     }
                 }
+}
+}
                 stage('Build') {
                     steps {
                         dir('java-war-repo') {
@@ -29,5 +31,5 @@ pipeline {
                 }
             }
         }
-    }
-}
+    
+
